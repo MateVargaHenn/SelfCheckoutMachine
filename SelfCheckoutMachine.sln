@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfCheckoutMachine.WebApi", "SelfCheckoutMachine.WebApi\SelfCheckoutMachine.WebApi.csproj", "{770041B3-6388-49DF-A569-2A1F674F5B69}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{770041B3-6388-49DF-A569-2A1F674F5B69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{770041B3-6388-49DF-A569-2A1F674F5B69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{770041B3-6388-49DF-A569-2A1F674F5B69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{770041B3-6388-49DF-A569-2A1F674F5B69}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53323AE1-AFAD-4DF4-A5A1-C2E5B248CE84}
+	EndGlobalSection
+EndGlobal

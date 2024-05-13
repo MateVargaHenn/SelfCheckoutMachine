@@ -1,0 +1,6 @@
+@SelfCheckoutMachine.WebApi_HostAddress = http://localhost:5250
+
+GET {{SelfCheckoutMachine.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
