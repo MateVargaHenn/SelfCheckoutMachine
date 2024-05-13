@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfCheckoutMachine.WebApi", "SelfCheckoutMachine.WebApi\SelfCheckoutMachine.WebApi.csproj", "{770041B3-6388-49DF-A569-2A1F674F5B69}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1568BF77-DED2-481D-AE53-3BC2B91307F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{770041B3-6388-49DF-A569-2A1F674F5B69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{770041B3-6388-49DF-A569-2A1F674F5B69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{770041B3-6388-49DF-A569-2A1F674F5B69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1568BF77-DED2-481D-AE53-3BC2B91307F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1568BF77-DED2-481D-AE53-3BC2B91307F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1568BF77-DED2-481D-AE53-3BC2B91307F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1568BF77-DED2-481D-AE53-3BC2B91307F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

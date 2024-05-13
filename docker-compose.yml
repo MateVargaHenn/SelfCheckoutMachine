@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  selfcheckoutmachine.webapi:
+    image: ${DOCKER_REGISTRY-}selfcheckoutmachinewebapi
+    build:
+      context: .
+      dockerfile: SelfCheckoutMachine.WebApi/Dockerfile
