@@ -1,10 +1,7 @@
-using AutoMapper;
-using Microsoft.AspNetCore.Components;
 using SelfCheckoutMachine.WebApi.Extensions;
 using SelfCheckoutMachine.WebApi.Middlewares;
-using Serilog;
 using System.Text.Json.Serialization;
-
+using Microsoft.Extensions.Logging;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 //Define a database connection:
@@ -12,7 +9,6 @@ builder.Services.AddDatabaseConnection(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 //Registered as an Extension.
 builder.Services.AddTransients();
-builder.Services.AddAutoMapper(typeof(MapperConfiguration));
 
 
 builder.Services.AddSwaggerGen();
