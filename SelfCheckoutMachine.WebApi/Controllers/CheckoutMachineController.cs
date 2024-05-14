@@ -8,14 +8,17 @@ namespace SelfCheckoutMachine.WebApi.Controllers
 {
     [Route("api/v1")]
     [ApiController]
-    public class CheckoutMachineController(ILogger<CheckoutMachineController> logger, IMapper mapper, IStockRepository stockRepository, ICheckoutBusinessLogic businessLogic) : ControllerBase
+    public class CheckoutMachineController(ILogger<CheckoutMachineController> logger, IStockRepository stockRepository, ICheckoutBusinessLogic businessLogic) : ControllerBase
     {
         private readonly ILogger<CheckoutMachineController> _logger = logger;
-        private readonly IMapper _mapper = mapper;
         private readonly IStockRepository _stockRepository = stockRepository;
         private readonly ICheckoutBusinessLogic _businessLogic = businessLogic;
         private List<Stock> stocks = null!;
+
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [Route("stock")]
         public async Task<IActionResult> CreateStocks([FromBody] CreateStockRequestDTO createStockRequestDTO)
         {
@@ -37,14 +40,23 @@ namespace SelfCheckoutMachine.WebApi.Controllers
             return RedirectToAction("GetAllStocks");
 
         }
+
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [Route("stocks")]
         public async Task<IActionResult> GetAllStocks()
         {
+            _logger.LogInformation("Initializing stocks list");
             this.stocks = await _stockRepository.ReadAllStocksAsync();
             return Ok(this.stocks);
         }
+
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [Route("checkout")]
         public async Task<IActionResult> CreateCheckout([FromBody] CreateCheckoutRequestDTO createCheckoutRequestDTO)
         {
