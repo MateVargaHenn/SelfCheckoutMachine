@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SelfCheckoutMachine.Core.DTO;
 using SelfCheckoutMachine.Domain.Interfaces;
 using SelfCheckoutMachine.Domain.Models;
