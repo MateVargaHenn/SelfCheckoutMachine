@@ -61,7 +61,7 @@ namespace SelfCheckoutMachine.WebApi.Controllers
 
             }
             CreateCheckoutResponseDTO createCheckoutResponseDTO = await _businessLogic.CheckoutAsync(checkout);
-            return Ok(createCheckoutResponseDTO);
+            return Ok(createCheckoutResponseDTO.Return);
         }
     }
 }
