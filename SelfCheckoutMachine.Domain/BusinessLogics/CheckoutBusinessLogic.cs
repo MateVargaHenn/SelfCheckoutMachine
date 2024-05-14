@@ -1,4 +1,5 @@
 ﻿using SelfCheckoutMachine.Core.DTO;
+using SelfCheckoutMachine.Core.Utils;
 using SelfCheckoutMachine.Domain.Interfaces;
 using SelfCheckoutMachine.Domain.Models;
 using Serilog;
@@ -12,7 +13,7 @@ public class CheckoutBusinessLogic(ICheckoutRepository checkoutRepository, IStoc
     public async Task<CreateCheckoutResponseDTO> CheckoutAsync(Checkout checkout)
     {
         
-        int price = RoundPriceToNearestFive(checkout.Price);
+        int price = PriceHelper.RoundPrice(checkout.Price);
         checkout.Return = Math.Abs(price - checkout.Payed);
 
         //Save to database
@@ -33,22 +34,5 @@ public class CheckoutBusinessLogic(ICheckoutRepository checkoutRepository, IStoc
             }
         }
         return dto;
-    }
-
-    private int RoundPriceToNearestFive(int price)
-    {
-        int remainder = price % 5;
-        if (remainder == 0)
-        {
-            return price;
-        }
-        else if (remainder < 3)
-        {
-            return price - remainder;
-        }
-        else
-        {
-            return price + (5 - remainder);
-        }
     }
 }
