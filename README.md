@@ -20,4 +20,10 @@ There are 2 types to install Database:
     5. Type `Update-Database`, and press enter. The generated migration will be running.
 ## 3. Run application
 If you chose docker installation, set the docker-compose as start up project, and run it.
-If you chose local installation, set the SelfCheckoutMachine.WebApi as startup project, and run it
+If you chose local installation, set the SelfCheckoutMachine.WebApi as startup project, and run it.
+## 4. Testing
+You can test it via Swagger also.
+But you can use these routes:
+- `/api/v1/Stock` POST
+- `/api/v1/Stocks` GET
+- `/api/v1/Checkout` POST
