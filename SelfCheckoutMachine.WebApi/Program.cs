@@ -1,44 +1,27 @@
-var builder = WebApplication.CreateBuilder(args);
+using AutoMapper;
+using Microsoft.AspNetCore.Components;
+using SelfCheckoutMachine.WebApi.Extensions;
+using SelfCheckoutMachine.WebApi.Middlewares;
+using Serilog;
+using System.Text.Json.Serialization;
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+//Define a database connection:
+builder.Services.AddDatabaseConnection(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
+//Registered as an Extension.
+builder.Services.AddTransients();
+builder.Services.AddAutoMapper(typeof(MapperConfiguration));
+
+
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
+app.ConfigureSwagger();
+// Register the exception handling middleware globally
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseHttpsRedirection();
-
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
-
+app.UseAuthorization();
+app.MapControllers();
 app.Run();
-
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
